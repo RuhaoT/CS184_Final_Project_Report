@@ -1,13 +1,18 @@
-# Welcome to MkDocs
+![Home](https://raw.githubusercontent.com/Linsanity81/High-LevelPuzzle/main/doc/teaser.png)
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# CUDA Enhanced Computational Design of High-level Interlocking Puzzles
 
-## Commands
+Welcome to the report website of CS184 2024 spring final project `CUDA Enhanced Computational Design of High-level Interlocking Puzzles`.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Hosted Content
+- Milestone Status Report
+
+## Team Members
+
+* **Ruhao Tian**
+* **Yifeng Zhang**
+* **Zixuan Wan**
+* **Zineng Tang**
 
 ## Project layout
 
