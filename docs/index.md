@@ -10,7 +10,7 @@ Welcome to the report website of CS184 2024 spring final project `CUDA Enhanced 
 ## Team Members
 
 * **Ruhao Tian**
-* **Yifeng Zhang**
+* **Yunshen Song**
 * **Zixuan Wan**
 * **Zineng Tang**
 
