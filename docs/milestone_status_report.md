@@ -2,7 +2,7 @@
 
 # Milestone Status Report: The Story So Far
 
-Composed by Ruhao Tian
+By Ruhao Tian
 
 ## Introduction: Our original plan
 
