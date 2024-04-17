@@ -13,10 +13,3 @@ Welcome to the report website of CS184 2024 spring final project `CUDA Enhanced 
 * **Yunshen Song**
 * **Zixuan Wan**
 * **Zineng Tang**
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
