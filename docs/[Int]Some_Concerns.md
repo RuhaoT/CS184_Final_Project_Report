@@ -1,0 +1,18 @@
+# Some Concerns
+
+Date: 2024/04/23
+Author: Ruhao Tian
+
+## 关于状态记录的颗粒度
+
+我们的SeedPath数据集每个项目是由一系列`SeedPath`结构体组成的，每个项目记录着SeedPath在生成中的一个不同状态。换而言之我们只有当`SeedPath`发生改变时才记录一个新的状态信息，但是在两个状态之间其实有很多的子状态，其中涉及很多临时变量并没有被记录。
+
+比如，找到SeedPath起始Voxel和生成完整SeedPath是两个相邻的状态。但是从找到起始Voxel开始，还要经历找垂直移动方向`perpAxisIDs`，找相邻Voxel`neiborVoxelList`，等一系列状态才能到达生成完整SeedPath。经历这些中间状态时`SeedPath`本身没有改变，所以以上这些中间变量也没有被记录。
+
+我担心的是仅仅记录`SeedPath`颗粒度过大，丢失了一些可能对机器学习有用的启发性信息。
+
+## 关于Reachability
+
+我们的SeedPath数据集并没有考虑到Reachability，事实上作者的生成方法也没有直接考虑到Reachability（因为正向考虑Reachability很难）。作者的办法是重复随机生成过程6次得到一个分布，然后取其中Reachability最小的SeedPath。按照我们目前数据集训练出来的模型也要被重复执行6次。
+
+我的想法是我们把Reachability纳入模型Reward的计算中，这样我们的模型就可以直接生成一个具有较小Reachability的SeedPath，从而只要执行一次，可以进一步提升效率。
