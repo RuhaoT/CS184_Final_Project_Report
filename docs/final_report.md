@@ -28,9 +28,19 @@ To identify our selective acceleration target, we profile the implementation of 
 
 Profiling results from both platforms identically show that the bottleneck of the original algorithm is computing the main path when creating a new piece, which consumes around 80% of execution time in some cases.
 
+![bottleneck](./images/final_report/bottleneck.png)
 
+To elaborate, within each trial of the algorithm, every piece of the puzzle is created by (1) finding a small set of seed voxels `SeedPath` that is movable in the target direction, (2) adding a set of block voxels `BlockPath` to prevent movement in other directions, and (3) adding voxels with small reachability to extend the piece. According to the profiling results, (1) and (2) are the most time-consuming parts of the algorithm.
 
 ### Selective Acceleration by Machine Learning
+
+#### Dataset Generation
+
+To gather data for training, we implemented a dataset kernel to record the generation process of `SeedPath` and `BlockPath`.
+
+![dataset kernel](./images/final_report/dataset_kernel.png)
+
+When the `SeedPath` generation starts, a `seedPathCreationSequence` is created to record the intermediate states of the `SeedPath`. Every time the `SeedPath` changes, the updated `SeedPath` is appended to the `seedPathCreationSequence`. The final `seedPathCreationSequence` is saved to a JSON file. The same process is applied to `BlockPath`.
 
 ### Benchmarking
 
