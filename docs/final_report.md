@@ -46,7 +46,7 @@ When the `SeedPath` generation starts, a `seedPathCreationSequence` is created t
 
 Intuitively, we determined that it should fit a geometric distribution since we are testing how many trials it would take for the program to output a successful build. To verify our hypothesis, we need to gather trial data, but this cannot be done alone since there are multiple shapes and each run would take all of the GPU, meaning that we can only process one shape at a time. After all, we were determined to process 2 different shapes.
 
-![Geometric Distribution](./images/final_report/GeometricProbabilityFunction.png)
+![Geometric Distribution](./images/final_report/GeometricProbabilityFunction.jpg)
 
 The first shape we chose is the spider because it is the most complex and takes the longest to run, so we hope that we can spot significant improvement after implementing our machine-learning model. The second shape we chose is the 5x5x5 cube, since it was the simplest of them all and takes the shortest time to run. 
 
@@ -54,11 +54,11 @@ We gathered 66 different trials of spiders with an average run time of 15.9 minu
 
 ### Cube
 
-![cube](./images/final_report/cube.png)
+![cube](./images/final_report/cube.jpg)
 
 ### Spider
 
-![spider](./images/final_report/spider.png)
+![spider](./images/final_report/spider.jpg)
 
 From the graph above, we can see that the geometric distribution is a great fit for the data. Furthermore, the variance of both shapes is approximately equal to the square of the mean. This is strong evidence that our data follows the geometric model.
 
@@ -68,7 +68,7 @@ Next, we will use our approximated geometric distribution to determine the impro
 
 ### 3D Printing
 
-![3dprint](./images/final_report/3dprint.png)
+![3dprint](./images/final_report/3dprint.jpg)
 
 ## References
 
@@ -79,4 +79,5 @@ Next, we will use our approximated geometric distribution to determine the impro
 ## Contributions
 
 ZIxuan&Yunshen: Benchmarking, result analysis, 3D printing and sanding.
+
 不要忘了写各自的contribution！
