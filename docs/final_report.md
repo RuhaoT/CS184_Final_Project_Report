@@ -44,6 +44,8 @@ When the `SeedPath` generation starts, a `seedPathCreationSequence` is created t
 
 ### Benchmarking
 
+Measuring the performance of the original program and our implemented acceleration requires a uniform standard. This is hard for the puzzle generator as too many random factors are involved, and each generation with the same parameter can take a significantly different amount of time. We decided to explore the probability distribution of the generation time and use it as a standard to compare the performance of the original program and our implemented acceleration.
+
 Intuitively, we determined that it should fit a geometric distribution since we are testing how many trials it would take for the program to output a successful build. To verify our hypothesis, we need to gather trial data, but this cannot be done alone since there are multiple shapes and each run would take all of the GPU, meaning that we can only process one shape at a time. After all, we were determined to process 2 different shapes.
 
 ![Geometric Distribution](./images/final_report/GeometricProbabilityFunction.jpg)
@@ -52,11 +54,11 @@ The first shape we chose is the spider because it is the most complex and takes 
 
 We gathered 66 different trials of spiders with an average run time of 15.9 minutes and an average trial of 277.7. We gathered 145 different trials of cubes with an average run time of 0.900 minutes. Below are the graphs and the statistics: 
 
-### Cube
+#### Cube
 
 ![cube](./images/final_report/cube.jpg)
 
-### Spider
+#### Spider
 
 ![spider](./images/final_report/spider.jpg)
 
