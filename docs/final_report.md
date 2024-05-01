@@ -117,7 +117,7 @@ In this work, we present a machine learning approach to accelerate the computati
 
 ## Contributions
 
-ZIxuan&Yunshen: Benchmarking, result analysis, 3D printing and sanding.
+Zixuan&Yunshen: Benchmarking, result analysis, 3D printing and sanding.
 
 Zineng: Machine learning algorithm.
 
