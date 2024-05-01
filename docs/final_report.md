@@ -71,7 +71,7 @@ Intuitively, we determined that it should fit a geometric distribution since we 
 
 The first shape we chose is the spider because it is the most complex and takes the longest to run, so we hope that we can spot significant improvement after implementing our machine-learning model. The second shape we chose is the 5x5x5 cube, since it was the simplest of them all and takes the shortest time to run. 
 
-We gathered 66 different trials of spiders with an average run time of 15.9 minutes and an average trial of 277.7. We gathered 145 different trials of cubes with an average run time of 0.900 minutes. Below are the graphs and the statistics: 
+We gathered 66 different trials of spiders with an average run time of 15.9 minutes and an average trial of 277.7. We gathered 145 different trials of cubes with an average run time of 0.900 minutes and an average trial of 8.9. Below are the graphs and the statistics: 
 
 #### Cube
 
@@ -90,6 +90,16 @@ Next, we will use our approximated geometric distribution to determine the impro
 ### 3D Printing
 
 ![3dprint](./images/final_report/3dprint.jpg)
+
+### Data Analysis
+
+Our current model aims to improve on the number of trials to find a successful build for Spiders and Cubes by choosing plausible seed paths instead of speeding up the process of seed path. Due to the amount of time spent on optimizing the machine-learning models, we perfected the model rather late, leaving us with limited time to thoroughly test it. 
+Below is the data we gathered from integrating our machine learning models:
+
+For spiders, the average trial number is 74.7(we have collected 8 runs so far, one of which is over 700 which we think a deadlock had occurred and we didn’t include it), and the average minutes per trial is 0.05732. Even adding the outlier, our average trial number would still be under 200. This stayed roughly the same from the earlier average trial time of 15.9 minutes divided by 277.7 = 0.057 minutes per trial. We think that this doesn't necessarily show improvement and the state of the computer at runtime would play a much bigger role. The trail number also improved by an average of 203 per process. Even though the dataset is small, with such a large improvement this shows that our machine learning model is successful at improving the trial number of spiders. We found that under different systems, the same seed number would lead to different results so we would have different trial and test dataset. 
+
+For cubes, the trial nums is 9.485. This is expected as cubes are relatively fast to finish and we don’t have high hopes of improving. The running time on the other hand was consistently smaller than 0.05 per process. We used a different computer to test the cubes due to technical issues, so not much can be concluded here.
+
 
 ## Conclusion
 In this work, we present a machine learning approach to accelerate the computational design of interlocking 3D puzzles. We profile the state-of-the-art algorithm to identify performance bottlenecks in generating seed and block paths for puzzle pieces. We instrument the algorithm to gather training data and train a random forest model to predict high-quality paths, reducing the number of expensive trial-and-error iterations.
