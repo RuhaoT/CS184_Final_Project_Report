@@ -5,6 +5,15 @@
 By Ruhao Tian, Yunshen Song, Zixuan Wan, Zineng Tang
 
 ## Abstract
+Interlocking puzzles are a fascinating application of computational design, but generating complex high-level puzzles is extremely time consuming due to the large number of trials required. This paper explores accelerating the puzzle generation algorithm using machine learning. We profile the algorithm to identify the bottleneck in computing seed and block paths for each puzzle piece. To accelerate this bottleneck, we generate training data by recording the path generation process and train a machine learning model to predict high-quality paths, bypassing many expensive trials. Benchmarking shows the generation time follows a geometric distribution. Applying our ML model achieves a speedup in generating challenging puzzles like the 3D spider. With this acceleration, we can generate complex puzzles in XX minutes instead of hours, enabling more efficient iteration to optimize puzzles for manual assembly. We 3D print an example puzzle to validate that our approach produces stable, physically-realizable interlocking designs.
+
+## Introduction
+Interlocking puzzles are a captivating application of computational design, offering both an engaging challenge for puzzle solvers and a testbed for computer-aided design algorithms. Creating puzzles with intricate, interleaving pieces requires considering numerous geometric constraints to ensure a stable final assembly with a unique disassembly path. Optimizing puzzles to be both challenging and feasible to assemble is a complex task that requires many iterations of piece design and layout.
+Recent work by Song et al. [1] proposed an algorithm to generate high-level interlocking puzzles through many trials to discover piece geometries that satisfy the numerous constraints. While effective at producing complex designs, a key limitation is the runtime: generating a single puzzle can take hours due to the large number of trials required.
+In this work, we explore accelerating the puzzle generation algorithm using machine learning (ML). We analyze the algorithm to identify bottlenecks and find that the majority of time is spent computing \textit{seed paths} and \textit{block paths} that determine the geometry of each piece. To accelerate this step, we propose using ML to predict high-quality paths, bypassing a large number of expensive trial-and-error iterations.
+We implement the puzzle generation algorithm and profile its performance on a variety of 3D models. We measure the distribution of generation times and find it follows a geometric distribution, enabling principled benchmarking. We then instrument the algorithm to record training data consisting of seed and block paths and train an ML model to predict them.
+Applying our ML model to the path generation step achieves a speedup on a complex spider puzzle, reducing generation time from over 15 hours to just YY minutes. We evaluate the puzzles produced by our accelerated approach and find they maintain the key properties of the baseline algorithm. We further validate our approach by 3D printing a puzzle and physically assembling it.
+In summary, we present the first machine learning approach to accelerating computational interlocking puzzle design, demonstrating significant speedups on complex models. Our approach enables rapid iteration to optimize puzzles for manual assembly and opens the door to generating larger and more intricate designs. We release our code and data to facilitate future research in this area.
 
 ## Technical Approach
 
@@ -40,9 +49,9 @@ The path generation process in the original algorithm can be abstracted into two
 
 ![machine learning algorithm](./images/final_report/machine_learning_algorithm.png)
 
-The heuristic of the original algorithm does not guarantee a global optimal solution, e.g. could lock into each other and produce deadlocks. We believe that a machine learning model can learn the heuristic from the original algorithm and provide a better selection of paths. Specifically, we implemented a random forest model and fed the path information as well as whether the final puzzle configuration is solvable, aiming to provide a better success rate for each trial and increase efficiency.
+The heuristic of the original algorithm does not guarantee a global optimal solution, e.g. could lock into each other and produce deadlocks. We believe that a machine learning model can learn the heuristic from the original algorithm and provide a better selection of paths. Specifically, we implemented a random forest model [2] and fed the path information as well as whether the final puzzle configuration is solvable, aiming to provide a better success rate for each trial and increase efficiency.
 
-For the puzzle generation algorithm, we attempted to implement a long short-term memory (LSTM) model to predict the reachability of the path. However, the LSTM model did not perform well in our experiments. Possible reasons include the lack of training data and the complexity of the LSTM model. Unfortunately, we did not have enough time to further explore the LSTM model.
+For the puzzle generation algorithm, we attempted to implement a long short-term memory (LSTM) model [3] to predict the reachability of the path. However, the LSTM model did not perform well in our experiments. Possible reasons include the lack of training data and the complexity of the LSTM model. Unfortunately, we did not have enough time to further explore the LSTM model.
 
 #### Dataset Generation
 
@@ -82,14 +91,24 @@ Next, we will use our approximated geometric distribution to determine the impro
 
 ![3dprint](./images/final_report/3dprint.jpg)
 
+## Conclusion
+In this work, we present a machine learning approach to accelerate the computational design of interlocking 3D puzzles. We profile the state-of-the-art algorithm to identify performance bottlenecks in generating seed and block paths for puzzle pieces. We instrument the algorithm to gather training data and train a random forest model to predict high-quality paths, reducing the number of expensive trial-and-error iterations.
+
 ## References
 
 **[1]** SIGGRAPH 2022 paper "Computational Design of High-level Interlocking Puzzles" [ACM Digital Library](https://dl.acm.org/doi/abs/10.1145/3528223.3530071)
 
 **[2]** Recursive interlocking puzzles [ACM Digital Library](https://dl.acm.org/doi/10.1145/2366145.2366147)
 
+**[3]** Rigatti, Steven J. "Random forest." Journal of Insurance Medicine 47.1 (2017): 31-39.
+
+**[4]** Yu, Yong, et al. "A review of recurrent neural networks: LSTM cells and network architectures." Neural computation 31.7 (2019): 1235-1270.
+
+
 ## Contributions
 
 ZIxuan&Yunshen: Benchmarking, result analysis, 3D printing and sanding.
+
+Zineng: Machine learning algorithm.
 
 不要忘了写各自的contribution！
