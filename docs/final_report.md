@@ -34,6 +34,16 @@ To elaborate, within each trial of the algorithm, every piece of the puzzle is c
 
 ### Selective Acceleration by Machine Learning
 
+#### Algorithm
+
+The path generation process in the original algorithm can be abstracted into two steps. First, the algorithm generates six candidate paths through complicated voxel space traversal. Second, the algorithm selects the best path as the final result. The selection criteria are based on the reachability of the path and the number of voxels in the path.
+
+![machine learning algorithm](./images/final_report/machine_learning_algorithm.png)
+
+The heuristic of the original algorithm does not guarantee a global optimal solution, e.g. could lock into each other and produce deadlocks. We believe that a machine learning model can learn the heuristic from the original algorithm and provide a better selection of paths. Specifically, we implemented a random forest model and fed the path information as well as whether the final puzzle configuration is solvable, aiming to provide a better success rate for each trial and increase efficiency.
+
+For the puzzle generation algorithm, we attempted to implement a long short-term memory (LSTM) model to predict the reachability of the path. However, the LSTM model did not perform well in our experiments. Possible reasons include the lack of training data and the complexity of the LSTM model. Unfortunately, we did not have enough time to further explore the LSTM model.
+
 #### Dataset Generation
 
 To gather data for training, we implemented a dataset kernel to record the generation process of `SeedPath` and `BlockPath`.
