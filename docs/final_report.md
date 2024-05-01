@@ -4,7 +4,7 @@
 
 By Ruhao Tian, Yunshen Song, Zixuan Wan, Zineng Tang
 
-Video: [Final Project Video](https://drive.google.com/file/d/1A5tIM0bmZq5TBEFfIzzvOMdcbp7rW2Gp/view?usp=sharing)
+Video: [Final Project Video](0)
 
 ## Abstract
 Interlocking puzzles are a fascinating application of computational design, but generating complex high-level puzzles is extremely time consuming due to the large number of trials required. This paper explores accelerating the puzzle generation algorithm using machine learning. We profile the algorithm to identify the bottleneck in computing seed and block paths for each puzzle piece. To accelerate this bottleneck, we generate training data by recording the path generation process and train a machine learning model to predict high-quality paths, bypassing many expensive trials. Benchmarking shows the generation time follows a geometric distribution. Applying our ML model achieves a speedup in generating challenging puzzles like the 3D spider. With this acceleration, we can generate complex puzzles in XX minutes instead of hours, enabling more efficient iteration to optimize puzzles for manual assembly. We 3D print an example puzzle to validate that our approach produces stable, physically-realizable interlocking designs.
